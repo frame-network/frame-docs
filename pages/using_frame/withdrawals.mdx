@@ -1,0 +1,26 @@
+# Withdrawing back to Ethereum
+
+## Native Bridge
+
+The native bridge is also slower than other bridging protocols when it comes to withdrawals.
+However, it is the safest and most trustless way to move funds from Frame back to mainnet.
+Once a valid withdrawal is submitted, it is impossible for any party to stop the transaction from completing.<a href="#footnote1"><sup style={{ color:'rgb(230, 130, 0)', marginLeft:-4, textDecoration: "none" }}> 1</sup></a>
+
+The full withdrawal process using the native bridge takes about 8 days.
+Once a withdrawal is initiated on Frame, an 8 day dispute window is opened to allow honest parties to challenge the validity of the withdrawal.
+After 8 days with no challenge, the user who initiated the withdrawal can claim their ETH through the bridge.
+
+Using the native bridge incurs no extra fees beyond the standard transaction gas fees.
+
+## Fast Bridges
+
+Fast bridges can process withdrawals within 30 minutes, but charge a small fee to front the Ether to users. As we get closer to mainnet, we'll reveal which fast bridges will be available upon launch.
+
+These bridges will wait for _L2 finality_ (transaction ordering finalized by the data availablity layer) before processing the withdrawal.
+
+Fast bridges usually start a withdrawal through the native bridge which deducts from the user's balance.
+They then promptly send ETH to the user and later claim the bridged ETH following the challenge window (~8 days).
+
+---
+
+<sup><a name="footnote1">1:</a></sup> This assumes that the L1 bridge contract is non-upgradeable.

@@ -1,0 +1,51 @@
+# 📄 Adding metadata
+
+NFTs signify ownership of a non-fungible asset on a blockchain.
+However, these tokens inherently lack data; to give these tokens meaningful representation, they require associated metadata.
+Metadata normally includes media (image or video), a name, and various other properties.
+
+## Setting up sample metadata
+
+For the sake of simplicity, we've setup metadata for the NFT contract we just wrote.
+NFT metadata is just JSON data that includes a pointer to some media and some attributes.
+Here's what our sample metadata looks like:
+
+```json
+{
+  "image": "ipfs://QmRmuCkoz1DAobvB9fofe4RekB9sgjuy5gujDVv4u4FzSM",
+  "name": "My First NFT"
+}
+```
+
+The first field is an image that points to a location in [IPFS](https://docs.ipfs.tech/concepts/what-is-ipfs/).
+Most dApps that interact with NFTs recognize this data format, and will fetch the image from IPFS to render it on the frontend.
+We've also included a name field that apps can use for display purposes.
+
+To save you time and money, we've uploaded this sample metadata to IPFS already.
+The IPFS pointer is `ipfs://QmRmuCkoz1DAobvB9fofe4RekB9sgjuy5gujDVv4u4FzSM`.
+
+## Adding metadata to our contract
+
+All we need to do now is change our NFT contract to point to this metadata in its `tokenURI` function.
+Here's what the new contract will look like:
+
+```solidity
+pragma solidity ^0.8.21;
+
+import "erc721a/ERC721A.sol";
+
+contract MyFirstFrameNFT is ERC721A {
+    constructor() ERC721A("MyFirstFrameNFT", "FIRST") {}
+
+    function mint(uint256 quantity) external {
+        _mint(msg.sender, quantity);
+    }
+
+    function tokenURI(uint256) public view override returns (string memory) {
+        return "ipfs://QmRmuCkoz1DAobvB9fofe4RekB9sgjuy5gujDVv4u4FzSM";
+    }
+}
+```
+
+This `tokenURI` function returns the same metadata for every token id.
+For real contracts, you'll most likely want to return different metadata for each token id.

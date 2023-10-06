@@ -1,0 +1,83 @@
+# Deploying on Frame
+
+Frame is EVM-compatible, so deploying contracts on Frame is very similar to deploying contracts on other EVM chains.
+For this example, you'll use Foundry's built-in deployment tool to deploy our NFT contract.
+
+## Deployment
+
+Before deploying, you will need to get the private key of the account you want to deploy from.
+This account should have enough gas to cover the deployment costs (~0.015 ETH).
+**Do not share this private key with anyone else.**
+
+To deploy the contract, you can run the following command
+
+```
+forge create --rpc-url http://www.rpc.testnet.frame.xyz/ MyFirstFrameNFT --private-key <YOUR_PRIVATE_KEY>
+```
+
+You should see this output in your terminal:
+
+```bash
+[⠒] Compiling...
+No files changed, compilation skipped
+Deployer: <YOUR_ACCOUNT_ADDRESS>
+Deployed to: DESTINATION_ADDRESS
+Transaction hash: TXN_HASH
+```
+
+The `DESTINATION_ADDRESS` is the address where your contract was deployed to.
+Congratulations, you've just deployed your first (of many) NFT contract!
+
+## Verification
+
+The contract you deployed is now on the blockchain, but only the compiled bytecode is visible.
+Compiled bytecode is nice to have, but it isn't human readable (like Solidity code).
+Contract verification is the act of publishing your contract's Solidity code and ABI to a block explorer so anyone can read the original code.
+Users are much more likely to interact with your contracts if the code is visible and verifiable.
+
+First, you will need to get the full flattened source code for your contract.
+This command will get the flattened source code and save it in a file called `flattened.txt`. Run it at the root folder of your project.
+
+```bash
+forge flatten src/MyFirstFrameNFT.sol --output flattened.txt
+```
+
+Next, go to your contract's page on the block explorer (use the `DESTINATION_ADDRESS` from above).
+Navigate to the `Code` tab and click the `Verify & Publish` button.
+
+<div style={{ display: "flex", justifyContent: "center", marginTop: 20 }}>
+  <img style={{ maxWidth: "100%" }} src="/assets/verification-1.png" />
+</div>
+
+You should then select the `Via flattened code` option on the next page. It will look something like this:
+
+<div style={{ display: "flex", justifyContent: "center", marginTop: 20 }}>
+  <img style={{ maxWidth: "100%" }} src="/assets/verification-2.png" />
+</div>
+
+Fill out the following page like below. You will need to take the contents of `flattened.txt` and paste it into the `Enter the Solidity Contract Code` section.
+
+<div style={{ display: "flex", justifyContent: "center", marginTop: 20 }}>
+  <img style={{ maxWidth: "100%" }} src="/assets/verification-3.png" />
+</div>
+
+Click `Verify & publish`, and your contract should verify within a couple of seconds.
+
+## Minting your NFT
+
+Now the contract is verified, you can use the block explorer to mint the NFTs you just created.
+Go to the `Write Contract` tab in the contract's block explorer page, and find the `mint` box.
+Fill out the number of NFTs you want to mint, and click the `Write` button.
+
+<div style={{ display: "flex", justifyContent: "center", marginTop: 20 }}>
+  <img style={{ maxWidth: "100%" }} src="/assets/mint-1.png" />
+</div>
+
+Confirm the transaction in your wallet and wait the transaction to complete. You've just minted your first NFTs!
+If you click into the transaction details page, you can see the tokens that you just minted. It should look something like this:
+
+<div style={{ display: "flex", justifyContent: "center", marginTop: 20 }}>
+  <img style={{ maxWidth: "100%" }} src="/assets/mint-2.png" />
+</div>
+
+That's all there is to it. You just successfully wrote, deployed, and minted your first NFTs on Frame.

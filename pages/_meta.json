@@ -1,0 +1,28 @@
+{
+  "about": {
+    "title": "Back to Frame",
+    "href": "https://frame.xyz",
+    "newWindow": true,
+    "type": "page"
+  },
+
+  "index": "Introduction",
+  "-- General": {
+    "type": "separator",
+    "title": "General"
+  },
+  "overview": "Overview", 
+  "fees": "Fees",
+  "-- Network Info": {
+    "type": "separator",
+    "title": "For Users"
+  },
+  "tools_integrations": "Tools & Integrations",
+  "network_info": "Network Info",
+  "using_frame": "Using Frame",
+  "-- For Devs": {
+    "type": "separator",
+    "title": "For Devs"
+  },
+  "your_first_nft_set": "Your First NFT Set"
+}

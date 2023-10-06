@@ -1,0 +1,88 @@
+# 👷 Setting up your development environment
+
+In order to write smart contracts on Frame, you'll need to set up [Foundry](https://github.com/foundry-rs/foundry).
+
+Foundry is a suite of tools that makes it easy to write, test, and deploy smart contracts. With Foundry, we can locally develop and test our smart contracts before launching them on testnet or mainnet.
+
+## 🛠 Install Foundry
+
+_Note: We recommend downloading the Solidity extension for VSCode which gives nice syntax highlighting._
+
+Installing foundry is as simple as going into your terminal and typing in the following:
+
+```bash
+curl -L https://foundry.paradigm.xyz | bash
+```
+
+Afterwards, you should see the following screen:
+
+<div style={{ display: "flex", justifyContent: "center", marginTop: 20 }}>
+  <img style={{ maxWidth: "100%" }} src="https://i.imgur.com/suK56XZ.png" />
+</div>
+
+If you see any problems or errors appear, you can read more about the installation
+process in [this guide](https://book.getfoundry.sh/getting-started/installation)
+from the Foundry docs.
+
+Now, simply run the following to install the latest version of Foundry:
+
+```bash
+foundryup
+```
+
+You should see the following:
+
+<div style={{ display: "flex", justifyContent: "center", marginTop: 20 }}>
+  <img style={{ maxWidth: "100%" }} src="https://i.imgur.com/5DhLGaR.png" />
+</div>
+
+Finally, let's make a new directory for our project.
+
+```bash
+cd <preferred_directory>
+forge init my-first-frame-nft
+cd my-first-frame-nft
+```
+
+`forge init my-first-frame-nft` creates a new directory called `my-first-frame-nft` and initializes it with a sample project.
+
+Inside the directory, there's 4 folders: `lib`, `script`, `src`, and `test`.
+
+These folders each have a specific purpose:
+
+- `lib` contains the smart contracts we'll write
+- `script` contains scripts that we can run to interact with our smart contracts
+- `src` contains the front-end code for our dapp
+- `test` contains tests for our smart contracts
+
+In this tutorial, we'll be interacting with `src` and `test` in order to create and deploy our NFT set.
+
+## Setup Solidity version
+
+Because Frame is a rollup, it's not always up to date with the latest EVM changes.
+The latest Solidity version, 0.8.21, contains a new opcode that isn't supported on Frame yet.
+To make sure our compiler is generating valid code, we need to add this line to our `foundry.toml` file:
+```
+evm_version = "paris"
+```
+This tells the Solidity compiler to compile our code against an older version of the EVM (which doesn't include the new opcode).
+
+## 🔨 Run tests on Foundry
+
+To make sure that our Foundry install worked, let's build and run the tests on our sample project.
+
+```
+forge build
+forge test
+```
+
+If it works, you should see the following:
+
+<div style={{ display: "flex", justifyContent: "center", marginTop: 20 }}>
+  <img style={{ maxWidth: "100%" }} src="https://i.imgur.com/NdH25Kk.png" />
+</div>
+
+If you're seeing this, you're just about ready to start writing your NFT smart contract!
+The above means that the two written sample tests both passed after you built the project using `forge build`.
+
+**Note: We will not be using the existing files in `src/` or `test/` for the rest of this tutorial. These files are only meant for reference.**

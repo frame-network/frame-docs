@@ -1,0 +1,115 @@
+# 📝 Writing the contract
+
+Now that your dev environment is all set up, we can get to writing the actual contract for our first NFT set on Frame.
+
+_But first_, we'll need to install a dependency.
+
+## 🔃 Installing dependencies
+
+_Note: This is an abridged tutorial made to get your contract up and running with ERC721A. You can read more about Foundry's dependency management [here](https://book.getfoundry.sh/projects/dependencies)._
+
+For this tutorial, we will be using the [ERC721A](https://github.com/chiru-labs/ERC721A) library to write our NFT smart contracts.
+ERC721A is an implementation of [ERC721](https://eips.ethereum.org/EIPS/eip-721), which is Ethereum's NFT standard.
+In order for a contract to be a valid NFT, it needs to implement all the functions defined in ERC721.
+Libraries such as ERC721A and [OpenZeppelin](https://github.com/OpenZeppelin/openzeppelin-contracts) implement the required ERC721 functions so developers can focus on building specific features for their NFTs.
+
+To install this dependency, run:
+
+```bash
+forge install chiru-labs/ERC721A --no-commit
+```
+
+This will add the library to the `lib` directory in your project.
+In order to use ERC721A in our contracts, we'll have to create a `remappings.txt` file in the root of our project. This file allows us to map a shortcut to the actual location of the library.
+
+So once you've created your `remappings.txt` file, add the following line to it:
+
+```bash
+erc721a/=lib/ERC721A/contracts/
+```
+
+Now we can use the ERC721A library in our contracts! 🎉
+
+## ✏️ The initial contract
+
+You can go ahead and delete `Counter.sol` in `src/`, `Counter.t.sol` in `test/`, and `Counter.s.sol` in `script/`. We won't be needing those anymore.
+
+In `src/`, create a new file called `MyFirstFrameNFT.sol`. This is where we'll be writing our contract.
+
+First, we'll need to define what solidity version we want to use. For this tutorial, we'll be using `0.8.21`. Add the following line to the top of your file:
+
+```solidity
+pragma solidity ^0.8.21;
+```
+
+Then, we'll need to import the ERC721A library we just installed. Add the following line to your file:
+
+```solidity
+import "erc721a/ERC721A.sol";
+```
+
+This line lets us use in our contract the ERC721A library we added as a dependency. Remember, we added the `erc721a/` prefix to the library's path in our `remappings.txt` file, so we can use that prefix to import the library.
+
+Your code should look like this:
+
+```solidity
+pragma solidity ^0.8.21;
+
+import "erc721a/ERC721A.sol";
+```
+
+Now let's write the actual contract logic. The first step is to declare a new contract instance called `MyFirstFrameNFT` and have it inherit from ERC721A.
+You can ignore any errors here as we've haven't implemented any required functions from ERC721A yet.
+
+```solidity
+pragma solidity ^0.8.21;
+
+import "erc721a/ERC721A.sol";
+
+contract MyFirstFrameNFT is ERC721A {}
+```
+
+We can now add a `constructor` to our contract. This is a special function that initializes the contract's state.
+Because our contract inherits from ERC721A, we need to call ERC721A's constructor to complete the initialization.
+We will pass in the name of our token `MyFirstFrameNFT` and its symbol `FIRST` into the ERC721A constructor.
+You'll notice that we don't pass anything specifically into our constructor - this is because we have no additional state variables to initialize.
+
+```solidity
+pragma solidity ^0.8.21;
+
+import "erc721a/ERC721A.sol";
+
+contract MyFirstFrameNFT is ERC721A {
+    constructor() ERC721A("MyFirstFrameNFT", "FIRST") {}
+}
+```
+
+We have a valid NFT contract now, but there's no way for users to mint these tokens.
+To enable minting, we need to add an external `mint` function that users can call.
+In a production-level app, the external mint function will normally take in a payment, validate that the user is on an allowlist, or check that the total supply is limited.
+For our test contract, we'll write a basic mint function that's accessible to all without cost and without a supply limit.
+
+```solidity
+pragma solidity ^0.8.21;
+
+import "erc721a/ERC721A.sol";
+
+contract MyFirstFrameNFT is ERC721A {
+    constructor() ERC721A("MyFirstFrameNFT", "FIRST") {}
+
+    function mint(uint256 quantity) external {
+        _mint(msg.sender, quantity);
+    }
+}
+```
+
+To make sure that the code you wrote is valid, you can run `forge build`. Your output should look like this:
+
+```bash
+[⠢] Compiling...
+[⠑] Compiling 3 files with 0.8.21
+[⠃] Solc 0.8.21 finished in 428.46ms
+Compiler run successful!
+```
+
+Congrats, you just wrote your first NFT contract! Now let's add some metadata to it.

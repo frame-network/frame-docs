@@ -1,0 +1,46 @@
+# Frame Overview
+
+<div
+  style={{
+    textAlign: "center",
+    borderRadius: 8,
+    overflow: "hidden",
+  }}
+>
+  <img src="https://i.imgur.com/WdJM72I.png" alt="Frame Image" />
+</div>
+
+Frame is an Ethereum rollup.
+
+Rollups are a layer 2 scaling solution built on top of Ethereum.
+Frame is EVM-compatible which means you can do anything on Frame that you would be able to do on Ethereum mainnet - deploy contracts, use Web3 apps, interact with wallets, etc.
+However, because Frame is a rollup, transactions will be cheaper and faster compared to Ethereum.
+Frame is an optimistic rollup which means it inherits many security properties from Ethereum.
+
+## How Rollups Work
+
+The core idea behind a rollup is to move computation from one blockchain (such as Ethereum) onto another blockchain (the rollup) which can process transactions quicker.
+Rollups will execute transactions, compress and bundle the transaction data, and post this data back to the underlying blockchain (the layer 1).
+This data is utilized by rollup nodes to derive the correct state of the chain, as well as by the Layer 1 network to determine the validity of withdrawals.
+
+Most rollups today have a centralized sequencer that quickly takes incoming transactions, orders the transactions, and publishes the ordering for other nodes to consume.
+The sequencer can process transactions quickly, which is why transactions are faster on rollups compared to mainnet (1-2 secs vs 12 secs).
+Users can alternatively submit transactions directly to the rollup bridge contract on L1 if they do not trust the sequencer.
+However, this process is slower and more expensive than submitting to a sequencer, and should only be used for deposits or in the case of a malicious sequencer.
+
+## Optimistic Rollup
+
+Frame is an optimistic rollup which means it uses "fraud proofs" to determine whether withdrawals from the network are valid.
+Optimimstic rollups assume that all transactions are valid by default, hence the "optimism".
+However, any party can submit a fraud proof to prove that a state transition in the chain is invalid.
+Transctions than involve L2 to L1 communication (including withdrawals) need to wait for the dispute window (~7 days) to pass before being finalized.
+This 7 day dispute window gives validators enough time to submit fraud proofs without being griefed from dishonest parties.
+
+## Rollup Tech
+
+Frame is built using [Arbitrum's Nitro stack](https://docs.arbitrum.io/why-nitro).
+Nitro is the latest version of Arbitrum technology which includes a complete optimistic rollup system, a sequencer, token bridges, fraud proofs, and more.
+Complete documentation of Nitro can be found on [Github](https://github.com/OffchainLabs/nitro).
+
+Nitro is EVM compatible, so contracts that are written for mainnet can be deployed onto Frame without any modifications.
+Applications requiring read or write access to Frame can employ the same processes used on mainnet, with the only difference being a different RPC and chain ID.
