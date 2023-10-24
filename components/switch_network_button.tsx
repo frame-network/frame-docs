@@ -2,19 +2,17 @@ export default function SwitchNetworkButton() {
   const onClick = async () => {
     // @ts-ignore
     if (window.ethereum) {
-      const rpcUrls = ["http://www.rpc.testnet.frame.xyz"];
-
       const params = {
-        // 81345 in hex
-        chainId: "0x13c41",
-        chainName: "Frame Network", // A string
+        // 68840142 in hex
+        chainId: "0x41A6ACE",
+        chainName: "Frame Testnet", // A string
         nativeCurrency: {
           name: "Ether", // A string
           symbol: "ETH", // 2-6 characters long
           decimals: 18,
         },
-        rpcUrls,
-        blockExplorerUrls: ["http://www.explorer.testnet.frame.xyz"],
+        rpcUrls: ["https://rpc.testnet.frame.xyz/http"],
+        blockExplorerUrls: ["https://explorer.testnet.frame.xyz/"],
       };
 
       // @ts-ignore
