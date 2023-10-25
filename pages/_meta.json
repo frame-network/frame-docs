@@ -24,5 +24,6 @@
     "type": "separator",
     "title": "For Devs"
   },
-  "your_first_nft_set": "Your First NFT Set"
+  "your_first_nft_set": "Your First NFT Set",
+  "deployments": "Deployments"
 }
