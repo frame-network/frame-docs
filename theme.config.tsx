@@ -151,6 +151,7 @@ const config: DocsThemeConfig = {
       },
       twitter: {
         site: "@frame_xyz",
+        //
       },
       additionalLinkTags: [
         {
