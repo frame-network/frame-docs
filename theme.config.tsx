@@ -141,7 +141,17 @@ const config: DocsThemeConfig = {
   useNextSeoProps() {
     return {
       titleTemplate: "%s - Frame Docs",
-      description: "Frame Docs Description",
+      description: "Documentation for Frame Network",
+      openGraph: {
+        type: "website",
+        locale: "en_IE",
+        siteName: "Frame Docs",
+        description: "Documentation for Frame Network",
+        // images:
+      },
+      twitter: {
+        site: "@frame_xyz",
+      },
       additionalLinkTags: [
         {
           rel: "icon",
