@@ -1,6 +1,6 @@
 # Block Explorer
 
-For our testnet, we're using Blockscout. The Frame testnet explorer can be found [here](https://www.explorer.frame.xyz/).
+For our testnet, we're using Blockscout. The Frame testnet explorer can be found [here](https://explorer.testnet.frame.xyz/).
 
 Blockscout offers tools for viewing and interacting with the network:
 
