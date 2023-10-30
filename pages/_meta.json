@@ -5,7 +5,6 @@
     "newWindow": true,
     "type": "page"
   },
-
   "index": "Introduction",
   "-- General": {
     "type": "separator",
@@ -25,5 +24,6 @@
     "title": "For Devs"
   },
   "your_first_nft_set": "Your First NFT Set",
-  "deployments": "Deployments"
+  "deployments": "Deployments",
+  "validator": "Running a Validator"
 }
