@@ -31,9 +31,9 @@ However, this process is slower and more expensive than submitting to a sequence
 ## Optimistic Rollup
 
 Frame is an optimistic rollup which means it uses "fraud proofs" to determine whether withdrawals from the network are valid.
-Optimimstic rollups assume that all transactions are valid by default, hence the "optimism".
+Optimistic rollups assume that all transactions are valid by default, hence the "optimism".
 However, any party can submit a fraud proof to prove that a state transition in the chain is invalid.
-Transctions than involve L2 to L1 communication (including withdrawals) need to wait for the dispute window (~7 days) to pass before being finalized.
+Transactions than involve L2 to L1 communication (including withdrawals) need to wait for the dispute window (~7 days) to pass before being finalized.
 This 7 day dispute window gives validators enough time to submit fraud proofs without being griefed from dishonest parties.
 
 ## Rollup Tech
