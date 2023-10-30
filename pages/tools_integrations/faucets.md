@@ -12,7 +12,7 @@ In order to receive Ether on Frame, you will need to get Sepolia Ether and bridg
 
 To get Frame testnet ETH directly, you can use this faucet:
 
-- [Triange](https://faucet.triangleplatform.com/frame/testnet)
+- [Triangle](https://faucet.triangleplatform.com/frame/testnet)
 
 In order to get Sepolia ETH, you can use one of the following resources:
 
