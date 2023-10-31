@@ -20,4 +20,4 @@ In order to get Sepolia ETH, you can use one of the following resources:
 - https://sepoliafaucet.com/
 - https://sepolia-faucet.pk910.de/
 
-Once you've received your Sepolia Ether, you can bridge it to Frame using our [native bridge](https://www.frame.xyz/bridge).
+Once you've received your Sepolia Ether, you can bridge it to Frame using our [native bridge](https://www.frame.xyz/bridge) or [SuperBridge](https://frame-testnet.testnets.superbridge.app).
