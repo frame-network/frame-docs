@@ -40,25 +40,28 @@ After cloning the repo, open the `testnet.config` file and replace `<SEPOLIA_RPC
 
 ## Running the Validator
 
-You will need to get the absolute path of your `frame-validator` directory by running:
-```bash filename="" copy
-pwd
-```
-
-You should then be able to start the validator by running:
+- Make sure you are on the `frame-validator` directory.
+- Then start the validator by running:
 ```bash filename="" copy
 docker run -d \
 --name frame \
 --rm \
 -it \
--v <ABSOLUTE_PATH>/node-data:/home/user/.frame \
--v <ABSOLUTE_PATH>/node-config/testnet.json:/home/user/testnet.json public.ecr.aws/o8e2k8j7/nitro-node:frame \
+-v $(pwd)/node-data:/home/user/.frame \
+-v $(pwd)/node-config/testnet.json:/home/user/testnet.json public.ecr.aws/o8e2k8j7/nitro-node:frame \
 --conf.file testnet.json
 ```
 
 ## Check the logs
 ```bash filename="" copy
 docker logs -f frame
+```
+
+## Oradd `--since` to view shorter logs
+
+- Example, see the logs starting from 1 minute ago
+```bash filename="" copy
+docker logs -f frame --since 1m
 ```
 
 If everything is working you should see `Running Arbitrum nitro node` and `Chain ID:  68840142 (unknown)` in your logs.
