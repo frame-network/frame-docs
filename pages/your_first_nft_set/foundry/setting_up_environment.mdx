@@ -10,7 +10,7 @@ _Note: We recommend downloading the Solidity extension for VSCode which gives ni
 
 Installing Foundry is as simple as going into your terminal and typing in the following:
 
-```bash
+```bash copy
 curl -L https://foundry.paradigm.xyz | bash
 ```
 
@@ -26,7 +26,7 @@ from the Foundry docs.
 
 Now, simply run the following to install the latest workingversion of Foundry:
 
-```bash
+```bash copy
 foundryup --version ca67d15
 ```
 
@@ -38,7 +38,7 @@ You should see the following:
 
 Finally, let's make a new directory for our project.
 
-```bash
+```bash copy
 cd <preferred_directory>
 forge init my-first-frame-nft
 cd my-first-frame-nft
@@ -62,7 +62,7 @@ In this tutorial, we'll be interacting with `src` and `test` in order to create 
 Because Frame is a rollup, it's not always up to date with the latest EVM changes.
 The latest Solidity version, 0.8.21, contains a new opcode that isn't supported on Frame yet.
 To make sure our compiler is generating valid code, we need to add this line to our `foundry.toml` file:
-```
+```py copy
 evm_version = "paris"
 ```
 This tells the Solidity compiler to compile our code against an older version of the EVM (which doesn't include the new opcode).
@@ -71,7 +71,7 @@ This tells the Solidity compiler to compile our code against an older version of
 
 To make sure that our Foundry install worked, let's build and run the tests on our sample project.
 
-```
+```bash  copy
 forge build
 forge test
 ```

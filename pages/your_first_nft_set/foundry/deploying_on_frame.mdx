@@ -11,13 +11,13 @@ This account should have enough gas to cover the deployment costs (~0.015 ETH).
 
 To deploy the contract, you can run the following command
 
-```
+```bash  copy
 forge create --rpc-url https://rpc.testnet.frame.xyz/http MyFirstFrameNFT --private-key <YOUR_PRIVATE_KEY>
 ```
 
 You should see this output in your terminal:
 
-```bash
+```ts filename="Output"
 [⠒] Compiling...
 No files changed, compilation skipped
 Deployer: <YOUR_ACCOUNT_ADDRESS>
@@ -38,7 +38,7 @@ Users are much more likely to interact with your contracts if the code is visibl
 First, you will need to get the full flattened source code for your contract.
 This command will get the flattened source code and save it in a file called `flattened.txt`. Run it at the root folder of your project.
 
-```bash
+```bash copy
 forge flatten src/MyFirstFrameNFT.sol --output flattened.txt
 ```
 
