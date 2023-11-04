@@ -15,7 +15,7 @@ Libraries such as ERC721A and [OpenZeppelin](https://github.com/OpenZeppelin/ope
 
 To install this dependency, run:
 
-```bash
+```bash copy
 forge install chiru-labs/ERC721A --no-commit
 ```
 
@@ -24,7 +24,7 @@ In order to use ERC721A in our contracts, we'll have to create a `remappings.txt
 
 So once you've created your `remappings.txt` file, add the following line to it:
 
-```bash
+```bash copy
 erc721a/=lib/ERC721A/contracts/
 ```
 
@@ -38,13 +38,13 @@ In `src/`, create a new file called `MyFirstFrameNFT.sol`. This is where we'll b
 
 First, we'll need to define what solidity version we want to use. For this tutorial, we'll be using `0.8.21`. Add the following line to the top of your file:
 
-```solidity
+```solidity copy
 pragma solidity ^0.8.21;
 ```
 
 Then, we'll need to import the ERC721A library we just installed. Add the following line to your file:
 
-```solidity
+```solidity copy
 import "erc721a/ERC721A.sol";
 ```
 
@@ -52,7 +52,7 @@ This line lets us use in our contract the ERC721A library we added as a dependen
 
 Your code should look like this:
 
-```solidity
+```solidity copy
 pragma solidity ^0.8.21;
 
 import "erc721a/ERC721A.sol";
@@ -61,7 +61,7 @@ import "erc721a/ERC721A.sol";
 Now let's write the actual contract logic. The first step is to declare a new contract instance called `MyFirstFrameNFT` and have it inherit from ERC721A.
 You can ignore any errors here as we've haven't implemented any required functions from ERC721A yet.
 
-```solidity
+```solidity copy
 pragma solidity ^0.8.21;
 
 import "erc721a/ERC721A.sol";
@@ -74,7 +74,7 @@ Because our contract inherits from ERC721A, we need to call ERC721A's constructo
 We will pass in the name of our token `MyFirstFrameNFT` and its symbol `FIRST` into the ERC721A constructor.
 You'll notice that we don't pass anything specifically into our constructor - this is because we have no additional state variables to initialize.
 
-```solidity
+```solidity copy
 pragma solidity ^0.8.21;
 
 import "erc721a/ERC721A.sol";
@@ -89,7 +89,7 @@ To enable minting, we need to add an external `mint` function that users can cal
 In a production-level app, the external mint function will normally take in a payment, validate that the user is on an allowlist, or check that the total supply is limited.
 For our test contract, we'll write a basic mint function that's accessible to all without cost and without a supply limit.
 
-```solidity
+```solidity copy
 pragma solidity ^0.8.21;
 
 import "erc721a/ERC721A.sol";
@@ -105,7 +105,7 @@ contract MyFirstFrameNFT is ERC721A {
 
 To make sure that the code you wrote is valid, you can run `forge build`. Your output should look like this:
 
-```bash
+```ts filename="Output"
 [⠢] Compiling...
 [⠑] Compiling 3 files with 0.8.21
 [⠃] Solc 0.8.21 finished in 428.46ms

@@ -10,7 +10,7 @@ For the sake of simplicity, we've setup metadata for the NFT contract we just wr
 NFT metadata is just JSON data that includes a pointer to some media and some attributes.
 Here's what our sample metadata looks like:
 
-```json
+```json filename="metadata.json"
 {
   "image": "ipfs://QmRmuCkoz1DAobvB9fofe4RekB9sgjuy5gujDVv4u4FzSM",
   "name": "My First NFT"
@@ -29,7 +29,7 @@ The IPFS pointer is `ipfs://QmRmuCkoz1DAobvB9fofe4RekB9sgjuy5gujDVv4u4FzSM`.
 All we need to do now is change our NFT contract to point to this metadata in its `tokenURI` function.
 Here's what the new contract will look like:
 
-```solidity
+```solidity filename="MyFirstFrameNFT.sol"
 pragma solidity ^0.8.21;
 
 import "erc721a/ERC721A.sol";
