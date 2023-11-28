@@ -1,8 +1,12 @@
 # Gas fees on Frame
 
+<div style={{ textAlign: "center", borderRadius: 8, overflow: "hidden" }}>
+  <img src="https://i.imgur.com/lJx7Pdq.png" alt="Frame" />
+</div>
+
 ## Background
 
-Before explaining how L2 gas fees work, it's important to understand how gas fees are derived on Ethereum mainnet (L1). 
+Before explaining how L2 gas fees work, it's important to understand how gas fees are derived on Ethereum mainnet (L1).
 Gas fees are calculated by multiplying the total gas units used by the cost per unit of gas.
 
 The number of gas units required is determined by the amount of computation and storage a transaction uses.
@@ -15,13 +19,17 @@ The priority fee is the amount that users are willing to pay block proposers to 
 This portion of the fee is given to the block proposer (validator) after the transaction is executed.
 
 Here's the formula for calculating the total gas required for an L1 transaction:
+
 ```
 gas_paid = gas_units * gas_price
 ```
+
 Which can be expanded out to:
+
 ```
 gas_paid = (21_000 + execution_cost) * (base_fee + priority_fee)
 ```
+
 A full breakdown of Ethereum mainnet gas costs can be found [here](https://ethereum.org/en/developers/docs/gas/).
 
 ## How L2 gas fees work
@@ -33,6 +41,7 @@ The amount of gas units consumed per transaction is similar to Ethereum mainnet 
 Unlike L1 however, the L2 portion of the gas fees are retained by the sequencer instead of being burned.
 
 The formula for computing the L2 execution gas costs looks like this:
+
 ```
 L2_execution = L2_gas_units * L2_gas_price
 ```
@@ -48,6 +57,7 @@ L1_gas ~= L1_base_fee * txn_size (bytes)
 ```
 
 The total gas fees a user pays for a txn on Frame can be roughly represented by this formula:
+
 ```
 txn_fee = L2_execution + L1_gas
 ```
